@@ -2,11 +2,11 @@ const { initializeApp, cert } = require('firebase-admin/app');
 const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
 const crypto = require('crypto');
 const moment = require('moment');
-
+const googleKey = JSON.parse(process.env.googleKey)
 
 class FireStore {
     async initFireStore() {
-        initializeApp({ credential: cert(process.env.KEY) });
+        initializeApp({ credential: cert(googleKey) });
         this.db = getFirestore();
         console.log("Running Firestore ID:", this.db.projectId)
     }
